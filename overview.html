@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview | Project Larry - OnePlus Nord CE 3 Lite Specs</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore the specs of OnePlus Nord CE 3 Lite with Project Larry. Learn about the Snapdragon 695, 120Hz display, 108MP camera, and custom ROM support." />
+  <meta name="keywords" content="OnePlus Nord CE 3 Lite, Project Larry, Overview, Specs, Snapdragon 695, 120Hz display, Android, Custom ROM" />
+  <meta name="author" content="Aryan Kumar, Ansh Agnihotri" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Overview | Project Larry - OnePlus Nord CE 3 Lite Specs" />
+  <meta property="og:description" content="Get detailed specs of the OnePlus Nord CE 3 Lite in Project Larry including display, performance, battery, camera and more." />
+  <meta property="og:image" content="device.png" />
+  <meta property="og:url" content="https://yourwebsite.com/overview.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg-color: #0f0f10;
+      --text-color: white;
+      --cursor-fill: white;
+      --nav-bg: #1a1a1c;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --cursor-fill: black;
+      --nav-bg: #e4e4e4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 30px 60px;
+      transition: background-color 0.4s, color 0.4s;
+      cursor: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+
+    .nav-left {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 40px;
+      background-color: var(--nav-bg);
+      padding: 12px 40px;
+      border-radius: 30px;
+      transition: background-color 0.4s;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-center a:hover {
+      color: tomato;
+      transform: scale(1.1);
+    }
+
+    .nav-center a.active {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    .highlight-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .highlight-text {
+      max-width: 600px;
+      line-height: 2.2;
+      font-size: 1.4rem;
+    }
+
+    .highlight-text h2 {
+      font-size: 2.6rem;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-text h2:hover {
+      color: tomato;
+      transform: scale(1.05);
+    }
+
+    .highlight-text ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .highlight-text li {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .highlight-text li:hover {
+      color: tomato;
+      transform: translateX(8px) scale(1.02);
+    }
+
+    .highlight-image img {
+      max-width: 650px;
+      width: 100%;
+    }
+
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--cursor-fill);
+      border: 2px solid tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">Project<br />Larry</div>
+    <div class="nav-center">
+      <a href="overview.html" class="active">Overview</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="madeby.html">Made By</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div class="nav-right" id="theme-toggle">🌙</div>
+  </nav>
+
+  <section class="highlight-section">
+    <div class="highlight-text">
+      <h2>✨ Highlights ----</h2>
+      <ul>
+        <li>⚙️ Snapdragon 695 SoC</li>
+        <li>📱 6.72&quot; FHD+ 120Hz LCD</li>
+        <li>🔋 5000mAh Battery + 67W Charging</li>
+        <li>📸 108MP Main Camera</li>
+        <li>📦 Custom ROM Friendly</li>
+        <li>💾 6/8GB RAM + 128/256GB Storage</li>
+      </ul>
+    </div>
+    <div class="highlight-image">
+      <img src="device.png" alt="OnePlus Nord CE 3 Lite Device Overview" />
+    </div>
+  </section>
+
+  <!-- Cursor dot -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Script -->
+  <script>
+    const cursor = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggle.textContent = isLight ? '☀️' : '🌙';
+      cursor.style.backgroundColor = isLight ? 'black' : 'white';
+    });
+  </script>
+</body>
+</html>

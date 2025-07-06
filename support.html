@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support | Project Larry - OnePlus Nord CE 3 Lite ROMs</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Find and download custom ROMs for OnePlus Nord CE 3 Lite on the official Project Larry support page. Explore ROMs like Evolution X and Project Matrixx." />
+  <meta name="keywords" content="Project Larry, OnePlus Nord CE 3 Lite, ROM support, Evolution X, Project Matrixx, Android 15, Custom ROM" />
+  <meta name="author" content="Aryan Kumar, Ansh Agnihotri" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Support | Project Larry - ROM Downloads" />
+  <meta property="og:description" content="Download custom ROMs like Evolution X and Project Matrixx for OnePlus Nord CE 3 Lite, maintained by the Project Larry team." />
+  <meta property="og:image" content="evolutionx.jpeg" />
+  <meta property="og:url" content="https://yourwebsite.com/support.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg-color: #0f0f10;
+      --text-color: white;
+      --card-bg: #141416;
+      --badge-bg: #1e1e1f;
+      --btn-bg: white;
+      --btn-text: black;
+      --cursor-fill: white;
+      --nav-bg: #1a1a1c;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f2f2f2;
+      --badge-bg: #dddddd;
+      --btn-bg: black;
+      --btn-text: white;
+      --cursor-fill: black;
+      --nav-bg: #e4e4e4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px 40px;
+      transition: background 0.4s, color 0.4s;
+      cursor: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .nav-left {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 30px;
+      background-color: var(--nav-bg);
+      padding: 10px 30px;
+      border-radius: 30px;
+      transition: background-color 0.4s;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .nav-center a.active {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 30px 0 20px;
+    }
+
+    .rom-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .rom-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      width: 280px;
+      padding: 20px;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.4s;
+    }
+
+    .rom-card img {
+      border-radius: 12px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      background-color: var(--badge-bg);
+      font-size: 0.8rem;
+    }
+
+    .rom-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .maintainer {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      color: gray;
+    }
+
+    .download-btn {
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(255, 99, 71, 0.4);
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      width: 200px;
+      height: 320px;
+      font-weight: bold;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      color: #888;
+    }
+
+    .cursor-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--cursor-fill);
+      border: 2px solid tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">Project<br />Larry</div>
+    <div class="nav-center">
+      <a href="overview.html">Overview</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="madeby.html">Made By</a>
+      <a href="support.html" class="active">Support</a>
+    </div>
+    <div class="nav-right" id="theme-toggle">🌙</div>
+  </nav>
+
+  <h2>ROM Support</h2>
+  <div class="rom-container">
+    <!-- Card 1 -->
+    <div class="rom-card">
+      <img src="evolutionx.jpeg" alt="Evolution X ROM for OnePlus Nord CE 3 Lite" />
+      <div class="badges">
+        <div class="badge">Unofficial</div>
+        <div class="badge">A15</div>
+      </div>
+      <div class="rom-title">Evolution X</div>
+      <div class="maintainer">Maintainer - @AnshAgnihotri2030</div>
+      <a href="https://t.me/OnePlusNordCE3Lite" class="download-btn">Download ⬇️</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="rom-card">
+      <img src="144055806.png" alt="Project Matrixx ROM for OnePlus Nord CE 3 Lite" />
+      <div class="badges">
+        <div class="badge">Unofficial</div>
+        <div class="badge">A15</div>
+      </div>
+      <div class="rom-title">Project Matrixx</div>
+      <div class="maintainer">Maintainer - @AnshAgnihotri2030</div>
+      <a href="https://t.me/OnePlusNordCE3Lite" class="download-btn">Download ⬇️</a>
+    </div>
+
+    <!-- Placeholder -->
+    <div class="placeholder">More Soon</div>
+  </div>
+
+  <!-- Cursor dot -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggle.textContent = isLight ? '☀️' : '🌙';
+      cursor.style.backgroundColor = isLight ? 'black' : 'white';
+    });
+  </script>
+</body>
+</html>

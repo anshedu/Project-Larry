@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Larry - Custom ROMs for OnePlus Nord CE 3 Lite</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Project Larry offers clean, efficient, and minimal custom ROMs for OnePlus Nord CE 3 Lite. Explore customizations and support for a smoother Android experience." />
+  <meta name="keywords" content="Project Larry, OnePlus Nord CE 3 Lite, Custom ROM, Android ROMs, Fast Android, Minimal UI, OnePlus Mods, Customization" />
+  <meta name="author" content="Aryan Kumar, Ansh Agnihotri" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (OG) Tags for Social Media Sharing -->
+  <meta property="og:title" content="Project Larry - Custom ROMs for OnePlus Nord CE 3 Lite" />
+  <meta property="og:description" content="Discover minimal and efficient ROMs designed for OnePlus Nord CE 3 Lite with Project Larry." />
+  <meta property="og:image" content="home.png" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (optional, replace path if needed) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Theme Style -->
+  <style>
+    :root {
+      --bg-color: #0f0f10;
+      --text-color: white;
+      --nav-bg: #1a1a1c;
+      --border-color: white;
+      --button-bg: #000;
+      --shadow-color: rgba(255, 255, 255, 0.4);
+      --larry-opacity: 0.12;
+      --larry-shadow: rgba(128, 128, 128, 0.4);
+      --cursor-fill: white;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --nav-bg: #e4e4e4;
+      --border-color: #000;
+      --button-bg: #fff;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+      --larry-opacity: 0.07;
+      --larry-shadow: rgba(180, 180, 180, 0.4);
+      --cursor-fill: black;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      cursor: none;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+    }
+
+    .nav-left {
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 30px;
+      background-color: var(--nav-bg);
+      padding: 10px 30px;
+      border-radius: 30px;
+      transition: background-color 0.4s;
+    }
+
+    .nav-center a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-center a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%) scaleX(0);
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-color);
+      transition: transform 0.3s ease;
+      transform-origin: center;
+    }
+
+    .nav-center a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-center a.active {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.4s;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      z-index: 2;
+      position: relative;
+      animation: slideFade 1s ease forwards;
+      opacity: 0;
+      transform: translateY(-20px);
+      letter-spacing: 1px;
+      transition: color 0.4s;
+    }
+
+    @keyframes slideFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .background-title {
+      font-size: 10rem;
+      font-weight: bold;
+      color: rgba(0, 0, 0, var(--larry-opacity));
+      position: absolute;
+      top: 27%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      text-shadow: 2px 2px 6px var(--larry-shadow);
+      transition: all 0.4s;
+    }
+
+    .hero img {
+      width: 600px;
+      max-width: 90%;
+      z-index: 1;
+      position: relative;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .buttons a {
+      padding: 12px 24px;
+      border-radius: 20px;
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 transparent;
+    }
+
+    .buttons a:hover {
+      background-color: #ccc;
+      transform: scale(1.05);
+      box-shadow: 0 0 12px var(--shadow-color);
+    }
+
+    .cursor-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--cursor-fill);
+      border: 2px solid tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease, border 0.3s ease;
+    }
+
+    .kofi-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffdd00;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: background 0.3s;
+    }
+
+    .kofi-btn:hover {
+      background-color: #ffc700;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">Project<br />Larry</div>
+    <div class="nav-center">
+      <a href="overview.html">Overview</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="madeby.html">Made By</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div class="nav-right" id="theme-toggle">🌙</div>
+  </nav>
+
+  <section class="hero">
+    <h1>OnePlus Nord CE 3 Lite</h1>
+    <div class="background-title">“Larry”</div>
+    <img src="home.png" alt="OnePlus Nord CE 3 Lite phone preview for Project Larry" />
+    <div class="buttons">
+      <a href="overview.html">Explore Specs</a>
+      <a href="support.html">View Custom ROMs</a>
+    </div>
+  </section>
+
+  <a href="donate.html" class="kofi-btn">Donate</a>
+
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor-dot');
+    const toggle = document.getElementById('theme-toggle');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggle.textContent = isLight ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate | Project Larry - Support Our Work</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Support Project Larry by donating through Google Pay. Your contributions help us continue building clean, minimal, and community-driven web experiences." />
+  <meta name="keywords" content="Donate Project Larry, Support Project Larry, Google Pay QR donation, Project Larry funding, Web development support" />
+  <meta name="author" content="Aryan Kumar, Ansh Agnihotri" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Donate | Project Larry" />
+  <meta property="og:description" content="Support Project Larry by scanning the Google Pay QR code and donating to help us grow." />
+  <meta property="og:image" content="GpayScanner.jpg" />
+  <meta property="og:url" content="https://yourwebsite.com/donate.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg-color: #0f0f10;
+      --text-color: white;
+      --nav-bg: #1a1a1c;
+      --border-color: white;
+      --card-bg: #1c1c1f;
+      --cursor-fill: white;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --nav-bg: #e4e4e4;
+      --border-color: #000;
+      --card-bg: #f3f3f3;
+      --cursor-fill: black;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      transition: background-color 0.4s, color 0.4s;
+      cursor: none;
+      padding: 30px 50px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+
+    .nav-left {
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 30px;
+      background-color: var(--nav-bg);
+      padding: 10px 30px;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-center a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-center a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-color);
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: center;
+    }
+
+    .nav-center a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-center a.active {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .donate-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 120px);
+    }
+
+    .donate-card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      transition: all 0.4s;
+      text-align: center;
+    }
+
+    .donate-card h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .donate-card img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--border-color);
+    }
+
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--cursor-fill);
+      border: 2px solid tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">Project<br />Larry</div>
+    <div class="nav-center">
+      <a href="overview.html">Overview</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="madeby.html">Made By</a>
+      <a href="support.html">Support</a>
+      <a href="donate.html" class="active">Donate</a>
+    </div>
+    <div class="nav-right" id="theme-toggle">🌙</div>
+  </nav>
+
+  <div class="donate-section">
+    <div class="donate-card">
+      <h2>Support Project Larry 💵</h2>
+      <img src="GpayScanner.jpg" alt="Scan this Google Pay QR code to donate to Project Larry" />
+    </div>
+  </div>
+
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor-dot');
+    const toggle = document.getElementById('theme-toggle');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+      cursor.style.backgroundColor = document.body.classList.contains('light') ? 'black' : 'white';
+    });
+  </script>
+</body>
+</html>

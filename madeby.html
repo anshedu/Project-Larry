@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Made By | Project Larry - Developer & Designer Team</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Meet the team behind Project Larry - Aryan Kumar (Web Developer) and Ansh Agnihotri (UI Designer). Connect via Telegram or social media." />
+  <meta name="keywords" content="Project Larry, developers, designers, web development, UI design, Aryan Kumar, Ansh Agnihotri, team" />
+  <meta name="author" content="Aryan Kumar, Ansh Agnihotri" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Made By | Project Larry - Developer & Designer Team" />
+  <meta property="og:description" content="Get to know the creators of Project Larry and connect with them online." />
+  <meta property="og:image" content="Aryan.jpg" />
+  <meta property="og:url" content="https://yourwebsite.com/madeby.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg-color: #0f0f10;
+      --text-color: white;
+      --card-bg: #1a1a1c;
+      --accent-color: tomato;
+      --cursor-fill: white;
+      --card-bg-light: #f2f2f2;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: var(--card-bg-light);
+      --cursor-fill: black;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 30px 60px;
+      transition: background-color 0.4s, color 0.4s;
+      cursor: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+
+    .nav-left {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 40px;
+      background-color: var(--card-bg);
+      padding: 12px 40px;
+      border-radius: 30px;
+      transition: background-color 0.4s;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .nav-center a::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-color);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-center a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-center a.active {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    body.light .nav-center {
+      background-color: #e4e4e4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      width: 400px;
+      height: auto;
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: 0 0 0px transparent;
+      transition: box-shadow 0.3s ease, background-color 0.4s;
+      color: var(--text-color);
+    }
+
+    .card:hover {
+      box-shadow: 0 0 18px var(--accent-color);
+    }
+
+    .card-flip {
+      width: 100%;
+      height: 460px;
+      perspective: 1000px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      top: 0;
+      left: 0;
+      border-radius: 20px;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .card-back {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      transform: rotateY(180deg);
+    }
+
+    .card-flip:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card h3 {
+      margin: 20px 0 6px;
+      font-size: 1.5rem;
+    }
+
+    .role {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .connect-btn {
+      padding: 12px 28px;
+      background-color: #222;
+      color: white;
+      border-radius: 14px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+
+    body.light .connect-btn {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .connect-btn:hover {
+      background-color: var(--accent-color);
+      color: black;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .socials img {
+      width: 28px;
+      height: 28px;
+      filter: invert(1);
+      transition: transform 0.3s;
+    }
+
+    body.light .socials img {
+      filter: invert(0);
+    }
+
+    .socials a:hover img {
+      transform: scale(1.2);
+    }
+
+    .kofi-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffdd00;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: background 0.3s;
+    }
+
+    .kofi-btn:hover {
+      background-color: #ffc700;
+    }
+
+    .cursor-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--cursor-fill);
+      border: 2px solid tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">Project<br />Larry</div>
+    <div class="nav-center">
+      <a href="overview.html">Overview</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="madeby.html" class="active">Made By</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div class="nav-right" id="theme-toggle">🌙</div>
+  </nav>
+
+  <h1>👨‍💻 Made By</h1>
+
+  <div class="card-container">
+    <!-- Aryan -->
+    <div class="card">
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="Aryan.jpg" alt="Portrait of Aryan Kumar, Web Developer of Project Larry" />
+          </div>
+          <div class="card-back">
+            <p>Hi I am Aryan, I am a Web Developer</p>
+          </div>
+        </div>
+      </div>
+      <h3>Aryan Kumar</h3>
+      <div class="role">Web Developer</div>
+      <p>"Nothing can come of nothing"</p>
+      <a href="https://t.me/aryankumar8827"><button class="connect-btn">Connect</button></a>
+      <div class="socials">
+        <a href="https://www.instagram.com/aryan_jha._?igsh=MTRlMTZ4Z201dGJudg%3D%3D&utm_source=qr"><img src="instagram.svg" alt="Aryan Kumar Instagram" /></a>
+        <a href="#"><img src="linkedin.svg" alt="Aryan Kumar LinkedIn" /></a>
+      </div>
+    </div>
+
+    <!-- Ansh -->
+    <div class="card">
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="ansh2.jpg" alt="Portrait of Ansh Agnihotri, UI Designer of Project Larry" />
+          </div>
+          <div class="card-back">
+            <p>Hi I am Ansh, I am a UI Designer</p>
+          </div>
+        </div>
+      </div>
+      <h3>Ansh Agnihotri</h3>
+      <div class="role">UI Designer</div>
+      <p>"Do what you love, love what you do"</p>
+      <a href="https://t.me/AnshAgnihotri2030"><button class="connect-btn">Connect</button></a>
+      <div class="socials">
+        <a href="https://www.instagram.com/anshagnihotri.exe?igsh=MXF0MWJkd2E3NXZqbQ=="><img src="instagram.svg" alt="Ansh Agnihotri Instagram" /></a>
+        <a href="#"><img src="linkedin.svg" alt="Ansh Agnihotri LinkedIn" /></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ko-Fi Donate Button -->
+  <a href="donate.html" class="kofi-btn">Donate</a>
+
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggle.textContent = isLight ? '☀️' : '🌙';
+      cursor.style.backgroundColor = isLight ? 'black' : 'white';
+    });
+  </script>
+</body>
+</html>
