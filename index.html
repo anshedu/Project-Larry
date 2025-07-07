@@ -23,211 +23,304 @@
 
   <!-- Theme Style -->
   <style>
-    :root {
-      --bg-color: #0f0f10;
-      --text-color: white;
-      --nav-bg: #1a1a1c;
-      --border-color: white;
-      --button-bg: #000;
-      --shadow-color: rgba(255, 255, 255, 0.4);
-      --larry-opacity: 0.12;
-      --larry-shadow: rgba(128, 128, 128, 0.4);
-      --cursor-fill: white;
-    }
+:root {
+  --bg-color: #0f0f10;
+  --text-color: white;
+  --nav-bg: #1a1a1c;
+  --border-color: white;
+  --button-bg: #000;
+  --shadow-color: rgba(255, 255, 255, 0.4);
+  --larry-opacity: 0.12;
+  --larry-shadow: rgba(128, 128, 128, 0.4);
+  --cursor-fill: white;
+}
 
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --nav-bg: #e4e4e4;
-      --border-color: #000;
-      --button-bg: #fff;
-      --shadow-color: rgba(0, 0, 0, 0.2);
-      --larry-opacity: 0.07;
-      --larry-shadow: rgba(180, 180, 180, 0.4);
-      --cursor-fill: black;
-    }
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --nav-bg: #e4e4e4;
+  --border-color: #000;
+  --button-bg: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --larry-opacity: 0.07;
+  --larry-shadow: rgba(180, 180, 180, 0.4);
+  --cursor-fill: black;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      overflow-x: hidden;
-      cursor: none;
-      transition: background 0.4s, color 0.4s;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  cursor: none;
+  transition: background 0.4s, color 0.4s;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 20px; /* Adds space between items when wrapped */
+}
 
-    .nav-left {
-      font-size: 1.2rem;
-      font-weight: bold;
-      line-height: 1.2;
-    }
+.nav-left {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
 
-    .nav-center {
-      display: flex;
-      gap: 30px;
-      background-color: var(--nav-bg);
-      padding: 10px 30px;
-      border-radius: 30px;
-      transition: background-color 0.4s;
-    }
+.nav-center {
+  display: flex;
+  gap: 30px;
+  background-color: var(--nav-bg);
+  padding: 10px 30px;
+  border-radius: 30px;
+  transition: background-color 0.4s;
+  flex-wrap: wrap; /* Allows nav links to wrap */
+  justify-content: center; /* Centers links when wrapped */
+  flex-grow: 1; /* Allows nav-center to take available space */
+}
 
-    .nav-center a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s ease;
-    }
+.nav-center a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
 
-    .nav-center a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -6px;
-      transform: translateX(-50%) scaleX(0);
-      width: 100%;
-      height: 2px;
-      background-color: var(--text-color);
-      transition: transform 0.3s ease;
-      transform-origin: center;
-    }
+.nav-center a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
 
-    .nav-center a:hover::after {
-      transform: translateX(-50%) scaleX(1);
-    }
+.nav-center a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
 
-    .nav-center a.active {
-      text-decoration: underline;
-    }
+.nav-center a.active {
+  text-decoration: underline;
+}
 
-    .nav-right {
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: color 0.4s;
-    }
+.nav-right {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.4s;
+}
 
-    .hero {
-      position: relative;
-      text-align: center;
-      margin-top: 60px;
-    }
+.hero {
+  position: relative;
+  text-align: center;
+  margin-top: 60px;
+  padding: 0 20px; /* Add horizontal padding for better spacing on small screens */
+}
 
-    .hero h1 {
-      font-size: 1.5rem;
-      color: var(--text-color);
-      z-index: 2;
-      position: relative;
-      animation: slideFade 1s ease forwards;
-      opacity: 0;
-      transform: translateY(-20px);
-      letter-spacing: 1px;
-      transition: color 0.4s;
-    }
+.hero h1 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  z-index: 2;
+  position: relative;
+  animation: slideFade 1s ease forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+  letter-spacing: 1px;
+  transition: color 0.4s;
+}
 
-    @keyframes slideFade {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+@keyframes slideFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .hero .background-title {
-      font-size: 10rem;
-      font-weight: bold;
-      color: rgba(0, 0, 0, var(--larry-opacity));
-      position: absolute;
-      top: 27%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      white-space: nowrap;
-      pointer-events: none;
-      text-shadow: 2px 2px 6px var(--larry-shadow);
-      transition: all 0.4s;
-    }
+.hero .background-title {
+  font-size: 10rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, var(--larry-opacity));
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 2px 2px 6px var(--larry-shadow);
+  transition: all 0.4s;
+}
 
-    .hero img {
-      width: 600px;
-      max-width: 90%;
-      z-index: 1;
-      position: relative;
-    }
+.hero img {
+  width: 600px;
+  max-width: 90%;
+  z-index: 1;
+  position: relative;
+  height: auto; /* Ensure image scales proportionally */
+}
 
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      z-index: 2;
-      position: relative;
-    }
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
 
-    .buttons a {
-      padding: 12px 24px;
-      border-radius: 20px;
-      background-color: var(--button-bg);
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      box-shadow: 0 0 0 transparent;
-    }
+.buttons a {
+  padding: 12px 24px;
+  border-radius: 20px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
 
-    .buttons a:hover {
-      background-color: #ccc;
-      transform: scale(1.05);
-      box-shadow: 0 0 12px var(--shadow-color);
-    }
+.buttons a:hover {
+  background-color: #ccc;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--shadow-color);
+}
 
-    .cursor-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: var(--cursor-fill);
-      border: 2px solid tomato;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease, border 0.3s ease;
-    }
+.cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--cursor-fill);
+  border: 2px solid tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
 
-    .kofi-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #ffdd00;
-      color: #000;
-      border: none;
-      padding: 10px 18px;
-      font-size: 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      z-index: 999;
-      transition: background 0.3s;
-    }
+.kofi-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffdd00;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: background 0.3s;
+}
 
-    .kofi-btn:hover {
-      background-color: #ffc700;
-    }
+.kofi-btn:hover {
+  background-color: #ffc700;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 768px (common tablet portrait/larger phone landscape) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding: 15px 20px;
+    gap: 15px; /* Adjust gap for stacked items */
+  }
+
+  .nav-center {
+    width: 100%; /* Make nav-center take full width */
+    justify-content: space-around; /* Distribute links evenly */
+    padding: 10px 15px;
+    border-radius: 25px;
+  }
+
+  .nav-center a {
+    font-size: 0.95rem; /* Slightly reduce font size for nav links */
+  }
+
+  .hero .background-title {
+    font-size: 6rem; /* Smaller "Larry" for tablets */
+    top: 35%; /* Adjust position to prevent overlap */
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  nav {
+    padding: 15px 15px;
+  }
+
+  .nav-left {
+    text-align: center;
+    width: 100%; /* Ensure "Project Larry" takes full width */
+  }
+
+  .nav-center {
+    flex-direction: column; /* Stack nav links even more tightly */
+    gap: 10px; /* Reduce gap between stacked links */
+    padding: 10px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-center a {
+    font-size: 0.9rem; /* Further reduce font size */
+    padding: 5px 0; /* Add vertical padding for touch targets */
+  }
+
+  .hero h1 {
+    font-size: 1.2rem; /* Smaller main heading */
+    margin-top: 40px; /* Adjust top margin */
+  }
+
+  .hero .background-title {
+    font-size: 4rem; /* Even smaller "Larry" for phones */
+    top: 45%; /* Further adjust position */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero img {
+    max-width: 95%; /* Make image slightly larger on small screens */
+  }
+
+  .buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Add space between stacked buttons */
+    margin-top: 20px;
+  }
+
+  .buttons a {
+    width: 80%; /* Make buttons take more width */
+    margin: 0 auto; /* Center buttons */
+  }
+
+  .kofi-btn {
+    bottom: 15px;
+    right: 15px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
   </style>
 </head>
 <body>
