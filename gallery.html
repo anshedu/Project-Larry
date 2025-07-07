@@ -20,125 +20,221 @@
 
   <style>
     :root {
-      --bg-color: #0f0f10;
-      --text-color: white;
-      --cursor-fill: white;
-      --nav-bg: #1a1a1c;
-    }
+  --bg-color: #0f0f10;
+  --text-color: white;
+  --cursor-fill: white;
+  --nav-bg: #1a1a1c;
+}
 
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --cursor-fill: black;
-      --nav-bg: #e4e4e4;
-    }
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --cursor-fill: black;
+  --nav-bg: #e4e4e4;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      padding: 30px 60px;
-      transition: background-color 0.4s, color 0.4s;
-      cursor: none;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 30px 60px; /* Base padding for larger screens */
+  transition: background-color 0.4s, color 0.4s;
+  cursor: none;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 30px;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 20px; /* Adds space between items when wrapped */
+}
 
-    .nav-left {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+.nav-left {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-    .nav-center {
-      display: flex;
-      gap: 40px;
-      background-color: var(--nav-bg);
-      padding: 12px 40px;
-      border-radius: 30px;
-      transition: background-color 0.4s;
-    }
+.nav-center {
+  display: flex;
+  gap: 40px;
+  background-color: var(--nav-bg);
+  padding: 12px 40px;
+  border-radius: 30px;
+  transition: background-color 0.4s;
+  flex-wrap: wrap; /* Allows nav links to wrap */
+  justify-content: center; /* Centers links when wrapped */
+  flex-grow: 1; /* Allows nav-center to take available space */
+}
 
-    .nav-center a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: 0.3s;
-    }
+.nav-center a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
 
-    .nav-center a:hover {
-      color: tomato;
-      transform: scale(1.05);
-    }
+.nav-center a:hover {
+  color: tomato;
+  transform: scale(1.05);
+}
 
-    .nav-center a.active {
-      text-decoration: underline;
-    }
+.nav-center a.active {
+  text-decoration: underline;
+}
 
-    .nav-right {
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
+.nav-right {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
 
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0 15px; /* Add horizontal padding to prevent text from hitting edges */
+}
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 20px 0;
-    }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+  max-width: 1200px; /* Optional: Limit max width for very large screens */
+  margin: 0 auto; /* Center the grid */
+  padding: 20px 15px; /* Adjust padding for better mobile spacing */
+}
 
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 10px;
-      transition: 0.4s ease;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  height: auto; /* Ensure image scales proportionally */
+}
 
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 99, 71, 0.6);
-    }
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 99, 71, 0.6);
+}
 
-    .cursor-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: var(--cursor-fill);
-      border: 2px solid tomato;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease;
-    }
+.cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--cursor-fill);
+  border: 2px solid tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
 
-    @media (max-width: 768px) {
-      h2 {
-        font-size: 2rem;
-      }
-      body {
-        padding: 20px;
-      }
-    }
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 1024px (standard for hiding cursor dot) */
+@media (max-width: 1024px) {
+  .cursor-dot {
+    display: none !important; /* Hide cursor dot on smaller screens */
+  }
+
+  /* Revert to default cursor for touch devices if body had custom cursor: none */
+  body {
+    cursor: auto;
+  }
+}
+
+/* For screens smaller than 768px (common tablet portrait/larger phone landscape) */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 25px; /* Reduce overall padding */
+  }
+
+  nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding-bottom: 20px;
+    gap: 15px; /* Adjust gap for stacked items */
+  }
+
+  .nav-center {
+    width: 100%; /* Make nav-center take full width */
+    justify-content: space-around; /* Distribute links evenly */
+    padding: 10px 15px;
+    border-radius: 25px;
+  }
+
+  .nav-center a {
+    font-size: 0.95rem; /* Slightly reduce font size for nav links */
+  }
+
+  h2 {
+    font-size: 2rem; /* Already defined, good for this breakpoint */
+    margin-bottom: 25px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Allow smaller columns */
+    gap: 20px; /* Reduce gap for tighter spacing */
+    padding: 15px 0; /* Adjust padding */
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px 15px; /* Further reduce overall padding */
+  }
+
+  nav {
+    padding-bottom: 15px;
+  }
+
+  .nav-left {
+    text-align: center;
+    width: 100%; /* Ensure "Project Larry" takes full width */
+  }
+
+  .nav-center {
+    flex-direction: column; /* Stack nav links even more tightly */
+    gap: 10px; /* Reduce gap between stacked links */
+    padding: 10px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-center a {
+    font-size: 0.9rem; /* Further reduce font size */
+    padding: 5px 0; /* Add vertical padding for touch targets */
+  }
+
+  h2 {
+    font-size: 1.8rem; /* Even smaller heading */
+    margin-bottom: 20px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 15px; /* Reduce gap for vertical stacking */
+    padding: 10px 0; /* Adjust padding */
+  }
+}
+
+/* Specific for touch devices to ensure cursor is default */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto; /* Revert to default cursor for touch devices */
+  }
+}
   </style>
 </head>
 <body>
