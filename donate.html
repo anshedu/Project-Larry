@@ -19,139 +19,256 @@
   <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --bg-color: #0f0f10;
-      --text-color: white;
-      --nav-bg: #1a1a1c;
-      --border-color: white;
-      --card-bg: #1c1c1f;
-      --cursor-fill: white;
-    }
+:root {
+  --bg-color: #0f0f10;
+  --text-color: white;
+  --nav-bg: #1a1a1c;
+  --border-color: white;
+  --card-bg: #1c1c1f;
+  --cursor-fill: white;
+}
 
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --nav-bg: #e4e4e4;
-      --border-color: #000;
-      --card-bg: #f3f3f3;
-      --cursor-fill: black;
-    }
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --nav-bg: #e4e4e4;
+  --border-color: #000;
+  --card-bg: #f3f3f3;
+  --cursor-fill: black;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      min-height: 100vh;
-      transition: background-color 0.4s, color 0.4s;
-      cursor: none;
-      padding: 30px 50px;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color 0.4s, color 0.4s;
+  cursor: none;
+  padding: 30px 50px; /* Base padding for larger screens */
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 30px;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 20px; /* Adds space between items when wrapped */
+}
 
-    .nav-left {
-      font-size: 1.5rem;
-      font-weight: bold;
-      line-height: 1.2;
-    }
+.nav-left {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
 
-    .nav-center {
-      display: flex;
-      gap: 30px;
-      background-color: var(--nav-bg);
-      padding: 10px 30px;
-      border-radius: 30px;
-      transition: background-color 0.3s;
-    }
+.nav-center {
+  display: flex;
+  gap: 30px;
+  background-color: var(--nav-bg);
+  padding: 10px 30px;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+  flex-wrap: wrap; /* Allows nav links to wrap */
+  justify-content: center; /* Centers links when wrapped */
+  flex-grow: 1; /* Allows nav-center to take available space */
+}
 
-    .nav-center a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
-    }
+.nav-center a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
 
-    .nav-center a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background-color: var(--text-color);
-      transform: translateX(-50%) scaleX(0);
-      transition: transform 0.3s;
-      transform-origin: center;
-    }
+.nav-center a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: center;
+}
 
-    .nav-center a:hover::after {
-      transform: translateX(-50%) scaleX(1);
-    }
+.nav-center a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
 
-    .nav-center a.active {
-      text-decoration: underline;
-    }
+.nav-center a.active {
+  text-decoration: underline;
+}
 
-    .nav-right {
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
+.nav-right {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
 
-    .donate-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 120px);
-    }
+.donate-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Adjust height calculation to account for nav padding and body padding */
+  min-height: calc(100vh - (30px + 30px + 20px + 20px)); /* body top+bottom padding + nav-bottom padding + some buffer */
+  padding: 20px; /* Add padding for content within the section */
+}
 
-    .donate-card {
-      background-color: var(--card-bg);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: all 0.4s;
-      text-align: center;
-    }
+.donate-card {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  transition: all 0.4s;
+  text-align: center;
+  max-width: 400px; /* Limit card width on larger screens */
+  width: 90%; /* Allow card to shrink on smaller screens */
+  margin: 0 auto; /* Center the card */
+}
 
-    .donate-card h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
+.donate-card h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
 
-    .donate-card img {
-      max-width: 300px;
-      width: 100%;
-      border-radius: 12px;
-      border: 2px solid var(--border-color);
-    }
+.donate-card img {
+  max-width: 300px;
+  width: 100%; /* Ensure image scales with its container */
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  height: auto; /* Maintain aspect ratio */
+}
 
-    /* Custom Cursor */
-    .cursor-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: var(--cursor-fill);
-      border: 2px solid tomato;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease;
-    }
+/* Custom Cursor */
+.cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--cursor-fill);
+  border: 2px solid tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 1024px (standard for hiding cursor dot) */
+@media (max-width: 1024px) {
+  .cursor-dot {
+    display: none !important; /* Hide cursor dot on smaller screens */
+  }
+
+  /* Revert to default cursor for touch devices if body had custom cursor: none */
+  body {
+    cursor: auto;
+  }
+}
+
+/* For screens smaller than 768px (common tablet portrait/larger phone landscape) */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 25px; /* Reduce overall padding */
+  }
+
+  nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding-bottom: 20px;
+    gap: 15px; /* Adjust gap for stacked items */
+  }
+
+  .nav-center {
+    width: 100%; /* Make nav-center take full width */
+    justify-content: space-around; /* Distribute links evenly */
+    padding: 10px 15px;
+    border-radius: 25px;
+  }
+
+  .nav-center a {
+    font-size: 0.95rem; /* Slightly reduce font size for nav links */
+  }
+
+  .donate-section {
+    /* Recalculate height based on new body/nav padding */
+    min-height: calc(100vh - (20px + 20px + 15px + 15px));
+    padding: 15px; /* Adjust padding for content within the section */
+  }
+
+  .donate-card {
+    padding: 25px; /* Reduce card padding */
+    width: 95%; /* Make card slightly wider on smaller tablets */
+  }
+
+  .donate-card h2 {
+    font-size: 1.8rem; /* Smaller heading */
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px 15px; /* Further reduce overall padding */
+  }
+
+  nav {
+    padding-bottom: 15px;
+  }
+
+  .nav-left {
+    text-align: center;
+    width: 100%; /* Ensure "Project Larry" takes full width */
+  }
+
+  .nav-center {
+    flex-direction: column; /* Stack nav links even more tightly */
+    gap: 10px; /* Reduce gap between stacked links */
+    padding: 10px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-center a {
+    font-size: 0.9rem; /* Further reduce font size */
+    padding: 5px 0; /* Add vertical padding for touch targets */
+  }
+
+  .donate-section {
+    min-height: calc(100vh - (15px + 15px + 10px + 10px));
+    padding: 10px;
+  }
+
+  .donate-card {
+    padding: 20px; /* Further reduce card padding */
+  }
+
+  .donate-card h2 {
+    font-size: 1.6rem; /* Even smaller heading */
+    margin-bottom: 15px;
+  }
+
+  .donate-card img {
+    max-width: 250px; /* Reduce max-width for image on very small screens */
+  }
+}
+
+/* Specific for touch devices to ensure cursor is default */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto; /* Revert to default cursor for touch devices */
+  }
+}
   </style>
 </head>
 <body>
