@@ -19,142 +19,275 @@
   <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --bg-color: #0f0f10;
-      --text-color: white;
-      --cursor-fill: white;
-      --nav-bg: #1a1a1c;
-    }
+:root {
+  --bg-color: #0f0f10;
+  --text-color: white;
+  --cursor-fill: white;
+  --nav-bg: #1a1a1c;
+}
 
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --cursor-fill: black;
-      --nav-bg: #e4e4e4;
-    }
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --cursor-fill: black;
+  --nav-bg: #e4e4e4;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      padding: 30px 60px;
-      transition: background-color 0.4s, color 0.4s;
-      cursor: none;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 30px 60px; /* Base padding for larger screens */
+  transition: background-color 0.4s, color 0.4s;
+  cursor: none;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 30px;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 20px; /* Adds space between items when wrapped */
+}
 
-    .nav-left {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+.nav-left {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-    .nav-center {
-      display: flex;
-      gap: 40px;
-      background-color: var(--nav-bg);
-      padding: 12px 40px;
-      border-radius: 30px;
-      transition: background-color 0.4s;
-    }
+.nav-center {
+  display: flex;
+  gap: 40px;
+  background-color: var(--nav-bg);
+  padding: 12px 40px;
+  border-radius: 30px;
+  transition: background-color 0.4s;
+  flex-wrap: wrap; /* Allows nav links to wrap */
+  justify-content: center; /* Centers links when wrapped */
+  flex-grow: 1; /* Allows nav-center to take available space */
+}
 
-    .nav-center a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
+.nav-center a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
 
-    .nav-center a:hover {
-      color: tomato;
-      transform: scale(1.1);
-    }
+.nav-center a:hover {
+  color: tomato;
+  transform: scale(1.1);
+}
 
-    .nav-center a.active {
-      text-decoration: underline;
-    }
+.nav-center a.active {
+  text-decoration: underline;
+}
 
-    .nav-right {
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
+.nav-right {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
 
-    .highlight-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 60px;
-      flex-wrap: wrap;
-    }
+.highlight-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+  gap: 40px; /* Adds space between text and image when wrapped */
+  padding: 0 15px; /* Add some horizontal padding for content */
+}
 
-    .highlight-text {
-      max-width: 600px;
-      line-height: 2.2;
-      font-size: 1.4rem;
-    }
+.highlight-text {
+  max-width: 600px;
+  line-height: 2.2;
+  font-size: 1.4rem;
+  flex: 1 1 45%; /* Allow text to grow/shrink, take about 45% initially */
+  min-width: 300px; /* Ensure text doesn't get too narrow */
+}
 
-    .highlight-text h2 {
-      font-size: 2.6rem;
-      margin-bottom: 30px;
-      transition: all 0.3s ease;
-    }
+.highlight-text h2 {
+  font-size: 2.6rem;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
 
-    .highlight-text h2:hover {
-      color: tomato;
-      transform: scale(1.05);
-    }
+.highlight-text h2:hover {
+  color: tomato;
+  transform: scale(1.05);
+}
 
-    .highlight-text ul {
-      list-style: none;
-      padding-left: 0;
-    }
+.highlight-text ul {
+  list-style: none;
+  padding-left: 0;
+}
 
-    .highlight-text li {
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+.highlight-text li {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
-    .highlight-text li:hover {
-      color: tomato;
-      transform: translateX(8px) scale(1.02);
-    }
+.highlight-text li:hover {
+  color: tomato;
+  transform: translateX(8px) scale(1.02);
+}
 
-    .highlight-image img {
-      max-width: 650px;
-      width: 100%;
-    }
+.highlight-image {
+  flex: 1 1 45%; /* Allow image to grow/shrink, take about 45% initially */
+  display: flex; /* Use flex to center image if it doesn't fill space */
+  justify-content: center; /* Center image horizontally */
+}
 
-    /* Custom Cursor */
-    .cursor-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: var(--cursor-fill);
-      border: 2px solid tomato;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease;
-    }
+.highlight-image img {
+  max-width: 650px;
+  width: 100%; /* Ensure image scales down */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--cursor-fill);
+  border: 2px solid tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 1024px (standard for hiding cursor dot) */
+@media (max-width: 1024px) {
+  .cursor-dot {
+    display: none !important; /* Hide cursor dot on smaller screens */
+  }
+
+  /* Revert to default cursor for touch devices if body had custom cursor: none */
+  body {
+    cursor: auto;
+  }
+
+  .highlight-section {
+    flex-direction: column; /* Stack text and image vertically */
+    margin-top: 40px;
+    gap: 30px; /* Adjust gap for stacked items */
+  }
+
+  .highlight-text,
+  .highlight-image {
+    flex: 1 1 100%; /* Make them take full width when stacked */
+  }
+
+  .highlight-text {
+    max-width: none; /* Remove max-width when stacked to allow full width */
+  }
+
+  .highlight-image img {
+    max-width: 90%; /* Adjust image size for stacked layout */
+  }
+}
+
+/* For screens smaller than 768px (common tablet portrait/larger phone landscape) */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 25px; /* Reduce overall padding */
+  }
+
+  nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding-bottom: 20px;
+    gap: 15px; /* Adjust gap for stacked items */
+  }
+
+  .nav-center {
+    width: 100%; /* Make nav-center take full width */
+    justify-content: space-around; /* Distribute links evenly */
+    padding: 10px 15px;
+    border-radius: 25px;
+  }
+
+  .nav-center a {
+    font-size: 0.95rem; /* Slightly reduce font size for nav links */
+  }
+
+  .highlight-text h2 {
+    font-size: 2.2rem; /* Smaller heading for mobile */
+    margin-bottom: 20px;
+    text-align: center; /* Center heading when stacked */
+  }
+
+  .highlight-text {
+    font-size: 1.2rem; /* Smaller body text */
+    line-height: 1.8; /* Adjust line height for better readability */
+    text-align: center; /* Center text content */
+  }
+
+  .highlight-text ul {
+    text-align: left; /* Keep list items left-aligned within the centered block */
+    padding-left: 20px; /* Add some padding for list items */
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px 15px; /* Further reduce overall padding */
+  }
+
+  nav {
+    padding-bottom: 15px;
+  }
+
+  .nav-left {
+    text-align: center;
+    width: 100%; /* Ensure "Project Larry" takes full width */
+  }
+
+  .nav-center {
+    flex-direction: column; /* Stack nav links even more tightly */
+    gap: 10px; /* Reduce gap between stacked links */
+    padding: 10px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-center a {
+    font-size: 0.9rem; /* Further reduce font size */
+    padding: 5px 0; /* Add vertical padding for touch targets */
+  }
+
+  .highlight-text h2 {
+    font-size: 1.8rem; /* Even smaller heading */
+  }
+
+  .highlight-text {
+    font-size: 1.1rem; /* Even smaller body text */
+  }
+}
+
+/* Specific for touch devices to ensure cursor is default */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto; /* Revert to default cursor for touch devices */
+  }
+}
   </style>
 </head>
 <body>
