@@ -321,6 +321,19 @@ nav {
     font-size: 0.9rem;
   }
 }
+    /* Hide cursor dot on screens smaller than a typical desktop/laptop (e.g., 1024px) */
+@media (max-width: 1024px) {
+  .cursor-dot {
+    display: none !important; /* Use !important to ensure it overrides other styles */
+  }
+}
+
+/* You might also want to adjust the cursor for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto; /* Revert to default cursor for touch devices */
+  }
+}
   </style>
 </head>
 <body>
