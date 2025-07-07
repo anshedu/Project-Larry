@@ -19,178 +19,312 @@
   <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --bg-color: #0f0f10;
-      --text-color: white;
-      --card-bg: #141416;
-      --badge-bg: #1e1e1f;
-      --btn-bg: white;
-      --btn-text: black;
-      --cursor-fill: white;
-      --nav-bg: #1a1a1c;
-    }
+:root {
+  --bg-color: #0f0f10;
+  --text-color: white;
+  --card-bg: #141416;
+  --badge-bg: #1e1e1f;
+  --btn-bg: white;
+  --btn-text: black;
+  --cursor-fill: white;
+  --nav-bg: #1a1a1c;
+}
 
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --card-bg: #f2f2f2;
-      --badge-bg: #dddddd;
-      --btn-bg: black;
-      --btn-text: white;
-      --cursor-fill: black;
-      --nav-bg: #e4e4e4;
-    }
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f2f2f2;
+  --badge-bg: #dddddd;
+  --btn-bg: black;
+  --btn-text: white;
+  --cursor-fill: black;
+  --nav-bg: #e4e4e4;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      padding: 20px 40px;
-      transition: background 0.4s, color 0.4s;
-      cursor: none;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px 40px; /* Base padding for larger screens */
+  transition: background 0.4s, color 0.4s;
+  cursor: none;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 20px; /* Adds space between items when wrapped */
+}
 
-    .nav-left {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+.nav-left {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
-    .nav-center {
-      display: flex;
-      gap: 30px;
-      background-color: var(--nav-bg);
-      padding: 10px 30px;
-      border-radius: 30px;
-      transition: background-color 0.4s;
-    }
+.nav-center {
+  display: flex;
+  gap: 30px;
+  background-color: var(--nav-bg);
+  padding: 10px 30px;
+  border-radius: 30px;
+  transition: background-color 0.4s;
+  flex-wrap: wrap; /* Allows nav links to wrap */
+  justify-content: center; /* Centers links when wrapped */
+  flex-grow: 1; /* Allows nav-center to take available space */
+}
 
-    .nav-center a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-    }
+.nav-center a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
 
-    .nav-center a.active {
-      text-decoration: underline;
-    }
+.nav-center a.active {
+  text-decoration: underline;
+}
 
-    .nav-right {
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
+.nav-right {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
 
-    h2 {
-      font-size: 1.8rem;
-      margin: 30px 0 20px;
-    }
+h2 {
+  font-size: 1.8rem;
+  margin: 30px 0 20px;
+  padding: 0 10px; /* Add some horizontal padding */
+}
 
-    .rom-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.rom-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Center cards in the container */
+  padding: 0 10px; /* Add some horizontal padding */
+}
 
-    .rom-card {
-      background-color: var(--card-bg);
-      border-radius: 16px;
-      width: 280px;
-      padding: 20px;
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: background-color 0.4s;
-    }
+.rom-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  width: 280px; /* Base width */
+  max-width: 100%; /* Ensure it doesn't overflow on small screens */
+  padding: 20px;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.4s;
+}
 
-    .rom-card img {
-      border-radius: 12px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
+.rom-card img {
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
 
-    .badges {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+.badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap; /* Allow badges to wrap if many */
+}
 
-    .badge {
-      padding: 4px 10px;
-      border-radius: 20px;
-      background-color: var(--badge-bg);
-      font-size: 0.8rem;
-    }
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: var(--badge-bg);
+  font-size: 0.8rem;
+}
 
-    .rom-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+.rom-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
 
-    .maintainer {
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      color: gray;
-    }
+.maintainer {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  color: gray;
+}
 
-    .download-btn {
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s;
-      border: none;
-    }
+.download-btn {
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+}
 
-    .download-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 12px rgba(255, 99, 71, 0.4);
-    }
+.download-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255, 99, 71, 0.4);
+}
 
-    .placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--card-bg);
-      border-radius: 16px;
-      width: 200px;
-      height: 320px;
-      font-weight: bold;
-      writing-mode: vertical-rl;
-      text-orientation: upright;
-      color: #888;
-    }
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  width: 200px; /* Base width */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  height: 320px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: #888;
+}
 
-    .cursor-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: var(--cursor-fill);
-      border: 2px solid tomato;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s ease;
-    }
+.cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--cursor-fill);
+  border: 2px solid tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 1024px (standard for hiding cursor dot) */
+@media (max-width: 1024px) {
+  .cursor-dot {
+    display: none !important; /* Hide cursor dot on smaller screens */
+  }
+
+  /* Revert to default cursor for touch devices if body had custom cursor: none */
+  body {
+    cursor: auto;
+  }
+}
+
+/* For screens smaller than 768px (common tablet portrait/larger phone landscape) */
+@media (max-width: 768px) {
+  body {
+    padding: 15px 20px; /* Reduce overall padding */
+  }
+
+  nav {
+    flex-direction: column; /* Stack nav items vertically */
+    padding-bottom: 15px;
+    gap: 15px; /* Adjust gap for stacked items */
+  }
+
+  .nav-center {
+    width: 100%; /* Make nav-center take full width */
+    justify-content: space-around; /* Distribute links evenly */
+    padding: 8px 15px;
+    border-radius: 25px;
+  }
+
+  .nav-center a {
+    font-size: 0.9rem; /* Slightly reduce font size for nav links */
+  }
+
+  h2 {
+    font-size: 1.6rem; /* Smaller section heading */
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center; /* Center the heading */
+  }
+
+  .rom-container {
+    gap: 15px; /* Reduce gap between cards */
+  }
+
+  .rom-card {
+    width: calc(50% - 10px); /* Two cards per row with gap */
+    min-width: 150px; /* Ensure cards don't become too small */
+    padding: 15px;
+  }
+
+  .placeholder {
+    width: calc(50% - 10px); /* Two placeholders per row with gap */
+    min-width: 150px;
+    height: 280px; /* Adjust height if needed */
+  }
+
+  .rom-title {
+    font-size: 1rem; /* Smaller title in card */
+  }
+
+  .maintainer {
+    font-size: 0.8rem; /* Smaller maintainer text */
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px 15px; /* Further reduce overall padding */
+  }
+
+  nav {
+    padding-bottom: 10px;
+  }
+
+  .nav-left {
+    text-align: center;
+    width: 100%; /* Ensure "Project Larry" takes full width */
+  }
+
+  .nav-center {
+    flex-direction: column; /* Stack nav links even more tightly */
+    gap: 8px; /* Reduce gap between stacked links */
+    padding: 8px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-center a {
+    font-size: 0.85rem; /* Further reduce font size */
+    padding: 4px 0; /* Add vertical padding for touch targets */
+  }
+
+  h2 {
+    font-size: 1.4rem; /* Even smaller heading */
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .rom-card {
+    width: 95%; /* Single card per row, taking most of the width */
+  }
+
+  .placeholder {
+    width: 95%; /* Single placeholder per row */
+  }
+
+  .download-btn {
+    padding: 8px; /* Slightly smaller button padding */
+    font-size: 0.9rem;
+  }
+}
+
+/* Specific for touch devices to ensure cursor is default */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto; /* Revert to default cursor for touch devices */
+  }
+}
   </style>
 </head>
 <body>
